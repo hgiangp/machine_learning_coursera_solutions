@@ -5,7 +5,7 @@ function Z = projectData(X, U, K)
 %   the normalized inputs X into the reduced dimensional space spanned by
 %   the first K columns of U. It returns the projected examples in Z.
 %
-
+m = size(X, 1); 
 % You need to return the following variables correctly.
 Z = zeros(size(X, 1), K);
 
@@ -16,7 +16,14 @@ Z = zeros(size(X, 1), K);
 %               eigenvector is given as follows:
 %                    x = X(i, :)';
 %                    projection_k = x' * U(:, k);
-%
+
+for i = 1:m
+    x = X(i, :)'; 
+    for k = 1:K
+        projection_k = x' * U(:, k);
+        Z(i, k) = projection_k; 
+    end
+end 
 
 
 

@@ -20,7 +20,18 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
+m = size(X, 1); 
+for iuser = 1:m
+    min_dis = 0; 
+    for k = 1:K
+        tmp = X(iuser, :) - centroids(k, :); 
+        distance = tmp*tmp'; 
+        if (distance < min_dis) || (idx(iuser) == 0)
+            idx(iuser) = k; 
+            min_dis = distance; 
+        end 
+    end    
+end 
 
 
 
